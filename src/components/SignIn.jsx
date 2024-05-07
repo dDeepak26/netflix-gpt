@@ -1,8 +1,13 @@
 import React, { useRef, useState } from "react";
 import checkValidData from "../utils/validate";
+import auth from "../utils/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const SignIn = () => {
-  const [isSignInForm, setSignInForm] = useState(false);
+  const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const name = useRef(null);
@@ -10,12 +15,46 @@ const SignIn = () => {
   const password = useRef(null);
 
   const handleButtonClick = () => {
-    const message = checkValidData(
-      name.current.value,
-      email.current.value,
-      password.current.value
-    );
+    const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
+
+    if (message) return;
+
+    if (!isSignInForm) {
+      // sign up logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " " + errorMessage);
+        });
+    } else {
+      // sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + " " + errorMessage);
+        });
+    }
   };
 
   const toogleSignInForm = () => {
@@ -26,10 +65,10 @@ const SignIn = () => {
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-md p-12 bg-black bg-opacity-80 rounded-lg shadow-md text-white sm:mt-4">
         <h1 className="text-3xl font-bold mb-6">
-          {isSignInForm ? "Sign Up" : "Sign In"}
+          {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         <form onSubmit={(e) => e.preventDefault}>
-          {isSignInForm && (
+          {!isSignInForm && (
             <div className="mb-6">
               <input
                 ref={name}
@@ -65,14 +104,14 @@ const SignIn = () => {
               type="button"
               onClick={handleButtonClick}
             >
-              {isSignInForm ? "Sign Up" : "Sign In"}
+              {isSignInForm ? "Sign In" : "Sign Up"}
             </button>
           </div>
           <div className="mt-6">
             <p onClick={toogleSignInForm}>
-              {isSignInForm ? "Already registered " : "New to Netflix? "}
+              {isSignInForm ? "New to Netflix? " : "Already registered "}
               <span className="cursor-pointer underline user-se">
-                {!isSignInForm ? "Sign Up" : "Sign In"} Now
+                {!isSignInForm ? "Sign In" : "Sign Up"} Now
               </span>
             </p>
           </div>
