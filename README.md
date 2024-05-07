@@ -1,7 +1,13 @@
 # Netflix-GPT Project
 
 - Made with create-react-app
-- Configure Tailwind
+- Configured Tailwind
+- Header
+- Routing of App
+- Login Form
+- Sign Up Form
+- Form Validation
+- UseRef Hook
 
 # Features
 
