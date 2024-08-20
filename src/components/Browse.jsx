@@ -13,7 +13,7 @@ const Browse = () => {
       <MainContainer />
       <SecondaryContainer />
       {/* 
-        MainConatiner
+        MainContainer
          - VideoBackground
          - VideoTitle
         SecondaryContainer
