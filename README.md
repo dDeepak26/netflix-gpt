@@ -1,4 +1,4 @@
-# Netflix-GPT Project
+# Movies-GPT Project
 
 - Made with create-react-app
 - Configured Tailwind
@@ -20,6 +20,14 @@
 - unscribed to the unAuthStateChanged callback
 - Register TMDB API & create an app & get access token
 - Get Data from TMDB now playing movie list API
+- Custom Hook for Now Playing Movies
+- Create movieSlice
+- Update Store with movies Data
+- Planning for MainContainer & Secondary Container
+- Fetch Data for Trailer Video
+- Update Store with Trailer Video Data
+- Embedded the Youtube video and make it auto-play and mute
+- Tailwind Classes to make Main Container look awesome
 
 # Features
 
