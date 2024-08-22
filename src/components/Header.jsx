@@ -45,14 +45,14 @@ const Header = () => {
   }, [dispatch, navigate]);
 
   return (
-    <div className="z-10 fixed top-0 h-20 flex items-center justify-between w-full p-4 bg-gradient-to-b from-black from-40% to-transparent">
+    <div className="z-50 fixed top-0 h-20 flex items-center justify-between w-full p-4 bg-gradient-to-b from-black from-40% to-transparent">
       <div className="flex items-center">
         {/* <img
           src="/assets/netflix-logo-removebg.png"
           alt="Netflix logo"
           className="h-10"
         /> */}
-        <span className="text-white text-2xl font-bold border-2 border-white cursor-pointer inline-block">
+        <span className="text-white text-2xl font-bold bg-red-600 border-2 border-white cursor-pointer inline-block">
           MoviesGPT
         </span>
       </div>
