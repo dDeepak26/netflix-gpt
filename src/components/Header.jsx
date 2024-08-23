@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,11 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        toast.error("Sign Out Successfully");
+      })
       .catch((error) => {
+        toast.error("An error occurred while signing out");
         // An error happened.
         navigate("/error");
       });

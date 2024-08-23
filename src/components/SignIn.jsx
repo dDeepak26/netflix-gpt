@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { toast } from "react-toastify";
 import profileImage from "../assets/profileImage.png";
 
 const SignIn = () => {
@@ -50,6 +51,7 @@ const SignIn = () => {
                   photoURL: photoURL,
                 })
               );
+              toast.success(`Welcome, ${displayName || "user"}!`);
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -70,6 +72,7 @@ const SignIn = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
+          toast.success(`Welcome back, ${user.displayName || "user"}!`);
         })
         .catch((error) => {
           const errorCode = error.code;

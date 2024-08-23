@@ -28,6 +28,10 @@
 - Update Store with Trailer Video Data
 - Embedded the Youtube video and make it auto-play and mute
 - Tailwind Classes to make Main Container look awesome
+- React Toast when user Sign Up,In & Out
+- usePopularMovies Custom Hook
+- useTopRatedMovies Custom Hook
+- useUpcomingMovies Custom Hook
 
 # Features
 
