@@ -6,15 +6,17 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { toast } from "react-toastify";
 import profileImage from "../assets/profileImage.png";
+import lang from "../utils/languageConstants";
 
 const SignIn = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
+  const langKey = useSelector((store) => store.config.lang);
 
   const name = useRef(null);
   const email = useRef(null);
@@ -90,7 +92,7 @@ const SignIn = () => {
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-md p-12 bg-black bg-opacity-80 rounded-lg shadow-md text-white sm:mt-4">
         <h1 className="text-3xl font-bold mb-6">
-          {isSignInForm ? "Sign In" : "Sign Up"}
+          {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
         </h1>
         <form onSubmit={(e) => e.preventDefault}>
           {!isSignInForm && (
@@ -100,7 +102,7 @@ const SignIn = () => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 bg-black bg-opacity-50 leading-tight focus:outline-none focus:shadow-outline"
                 id="userName"
                 type="text"
-                placeholder="Full Name"
+                placeholder={lang[langKey].fullName}
               />
             </div>
           )}
@@ -110,7 +112,7 @@ const SignIn = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 bg-black bg-opacity-50 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
-              placeholder="Email Address"
+              placeholder={lang[langKey].emailAddress}
             />
           </div>
           <div className="mb-3">
@@ -119,7 +121,7 @@ const SignIn = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 bg-black bg-opacity-50 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
-              placeholder="Password"
+              placeholder={lang[langKey].password}
             />
             <p className="text-red-500 font-bold">{errorMessage}</p>
           </div>
@@ -129,14 +131,18 @@ const SignIn = () => {
               type="button"
               onClick={handleButtonClick}
             >
-              {isSignInForm ? "Sign In" : "Sign Up"}
+              {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
             </button>
           </div>
           <div className="mt-6">
             <p onClick={toogleSignInForm}>
-              {isSignInForm ? "New to Netflix? " : "Already registered "}
+              {isSignInForm
+                ? lang[langKey].newToNetflix
+                : lang[langKey].alreadyRegistered}
               <span className="cursor-pointer underline user-se">
-                {!isSignInForm ? "Sign In" : "Sign Up"} Now
+                {!isSignInForm
+                  ? lang[langKey].signInNow
+                  : lang[langKey].signUpNow}
               </span>
             </p>
           </div>

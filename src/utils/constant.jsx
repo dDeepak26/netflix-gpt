@@ -2,10 +2,15 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYzk2ZjBmZTdmMzIzOTYyMGMxZTlkNjM1YzZlZTNhZSIsIm5iZiI6MTcyMzY0NDk4MC45NzIzOTQsInN1YiI6IjY2OGMwMDhhOTIzYjA4Mzk3YTYyYzA0ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7LF0r_wNnL2m53Q15G5eeYqQllQg4L2DoSqRmm57RmY",
+    Authorization: "Bearer" + import.meta.env.VITE_WEB_APP_MOVIES_OPTIONS,
   },
 };
 
 // TMBD image url
 export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+
+export const SUPPORT_LANGUAGES = [
+  { identifier: "english", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "telugu", name: "Telugu" },
+];

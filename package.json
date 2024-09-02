@@ -1,5 +1,5 @@
 {
-  "name": "movies-gpt",
+  "name": "netflix-gpt",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,6 +15,7 @@
     "firebase": "^10.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-multi-lang": "^1.0.6",
     "react-redux": "^9.1.2",
     "react-toastify": "^10.0.5"
   },

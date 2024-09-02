@@ -1,4 +1,4 @@
-# Movies-GPT Project
+# Netflix-GPT Project
 
 - Made with create-react-app
 - Configured Tailwind
@@ -32,6 +32,9 @@
 - usePopularMovies Custom Hook
 - useTopRatedMovies Custom Hook
 - useUpcomingMovies Custom Hook
+- GPT Search Page
+- GPT Search Bar
+- **Multi-language Feature in App**
 
 # Features
 
