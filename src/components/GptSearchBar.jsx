@@ -24,8 +24,6 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
-    console.log(searchText.current.value);
-
     const prompt =
       "Act as a movie Recommendation system and suggest some movies foe the query : " +
       searchText.current.value +
@@ -35,17 +33,13 @@ const GptSearchBar = () => {
 
     try {
       const result = await model.generateContent([prompt]);
-      console.log(result.response.text());
       const gptMoviesArray = result.response.text().split(",");
-      console.log(gptMoviesArray);
 
       const promiseArray = gptMoviesArray.map((movie) =>
         searchMoviesTMDB(movie)
       );
 
       const tmdbResults = await Promise.all(promiseArray);
-
-      console.log(tmdbResults);
 
       dispatch(
         addGptMovieResult({
