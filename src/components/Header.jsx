@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const unsubcribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(
@@ -52,7 +52,7 @@ const Header = () => {
       }
     });
 
-    return () => unsubcribe();
+    return () => unsubscribe();
   }, [dispatch, navigate]);
 
   const handleGptSearchClick = () => {
@@ -77,7 +77,6 @@ const Header = () => {
       {/* Mobile Menu Icon - Only visible on mobile */}
       <div className="block md:hidden">
         <button onClick={handleDropdownToggle} className="text-white">
-          {/* Replace with any menu icon or an SVG */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -100,7 +99,7 @@ const Header = () => {
         {user && (
           <div className="relative flex items-center space-x-2 md:space-x-4">
             <button
-              className="py-2 px-4 mx-3 text-white font-bold bg-purple-800 rounded-lg"
+              className="py-2 px-4 mx-3 text-white font-bold bg-purple-800 rounded-lg w-full transition-transform duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 active:bg-purple-700 whitespace-nowrap"
               onClick={handleGptSearchClick}
             >
               {showGptSearch
@@ -144,7 +143,7 @@ const Header = () => {
 
             <button
               onClick={handleSignOut}
-              className="text-white text-sm md:text-base font-bold hover:underline"
+              className="bg-red-600 text-white font-bold py-2 px-4 rounded-lg w-full transition-transform duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
             >
               {lang[langKey].signOut}
             </button>
@@ -170,7 +169,6 @@ const Header = () => {
       {/* Mobile Dropdown Menu - Visible only when toggled on mobile */}
       {isDropdownOpen && (
         <div className="absolute top-full right-0 mt-2 w-full bg-gray-900 text-white p-4 md:hidden">
-          {/* Same content as main content but optimized for mobile */}
           {user && (
             <div className="flex flex-col space-y-4">
               <button
@@ -196,7 +194,7 @@ const Header = () => {
 
               <button
                 onClick={handleSignOut}
-                className="text-white font-bold w-full hover:underline"
+                className="bg-red-600 text-white font-bold py-2 px-4 rounded-lg w-full transition-transform duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
               >
                 {lang[langKey].signOut}
               </button>
