@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { SUPPORT_LANGUAGES } from "../utils/constant";
@@ -66,7 +64,7 @@ const Header = () => {
   };
 
   return (
-    <div className="z-50 fixed top-0 h-16 md:h-20 flex items-center justify-between w-full p-4 bg-gradient-to-b from-black from-40% to-transparent">
+    <div className="z-40 fixed top-0 h-16 md:h-20 flex items-center justify-between w-full p-4 bg-gradient-to-b from-black from-40% to-transparent">
       {/* Netflix logo - Always visible */}
       <div className="flex items-center">
         <img

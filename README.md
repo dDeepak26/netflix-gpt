@@ -35,6 +35,11 @@
 - GPT Search Page
 - GPT Search Bar
 - **Multi-language Feature in App**
+- Get Gemini API key
+- GPT Search API Call
+- fetched gptMoviesSuggestion from TMDB
+- Memoization
+- Made our Site Responsive
 
 # Features
 

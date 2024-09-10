@@ -2,13 +2,13 @@ import React from "react";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="w-screen aspect-video pt-[20%] px-12 absolute text-white bg-gradient-to-r from-black">
+    <div className="w-screen aspect-video pt-[20%] px-6 md:px-12 absolute text-white bg-gradient-to-r from-black">
       <div>
-        <h1 className="text-3xl font-bold">{title}</h1>
-        <p className="py-6 text-lg w-1/4">{overview}</p>
+        <h1 className="text-2xl md:text-3xl font-bold">{title}</h1>
+        <p className="hidden md:inline-block py-6 text-lg w-1/4">{overview}</p>
       </div>
-      <div className="flex items-center space-x-2">
-        <button className="bg-white text-black font-bold px-6 py-2 rounded-lg flex items-center space-x-2 hover:bg-gray-300">
+      <div className="flex items-center space-x-2 my-4 md:my-0">
+        <button className="bg-white text-black font-bold px-2 md:px-6 py-1 md:py-2 rounded-lg flex items-center space-x-2 hover:bg-gray-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -20,7 +20,7 @@ const VideoTitle = ({ title, overview }) => {
           </svg>
           <span>Play</span>
         </button>
-        <button className="bg-gray-600 text-white font-bold px-6 py-2 rounded-lg flex items-center space-x-2 bg-transparent-80 hover:bg-gray-700">
+        <button className="hidden md:inline-flex bg-gray-600 text-white font-bold px-6 py-2 rounded-lg flex items-center space-x-2 bg-transparent-80 hover:bg-gray-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
