@@ -9,7 +9,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { toast } from "react-toastify";
-import profileImage from "../assets/profileImage.png";
+// import profileImage from "../assets/profileImage.png";
+import profileImage from "/assets/profileImage.png";
 import lang from "../utils/languageConstants";
 
 const SignIn = () => {
