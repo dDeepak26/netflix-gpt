@@ -1,58 +1,25 @@
-# Netflix-GPT Project
+# Netflix-GPT
 
-- Made with create-react-app
-- Configured Tailwind
-- Header
-- Routing of App
-- Login Form
-- Sign Up Form
-- Form Validation
-- UseRef Hook
-- Firebase Setup
-- Deploying our app to production
-- Create SignUp User Account
-- Implemented Sign In user Api
-- Created Redux Store with userSlice
-- Implemented Sign Out
-- Update Profile
-- BugFix: Sign up user displayName and profile picture update
-- BugFix: if the user is not logged in Redirect /browse to Login Page and vice-versa
-- unscribed to the unAuthStateChanged callback
-- Register TMDB API & create an app & get access token
-- Get Data from TMDB now playing movie list API
-- Custom Hook for Now Playing Movies
-- Create movieSlice
-- Update Store with movies Data
-- Planning for MainContainer & Secondary Container
-- Fetch Data for Trailer Video
-- Update Store with Trailer Video Data
-- Embedded the Youtube video and make it auto-play and mute
-- Tailwind Classes to make Main Container look awesome
-- React Toast when user Sign Up,In & Out
-- usePopularMovies Custom Hook
-- useTopRatedMovies Custom Hook
-- useUpcomingMovies Custom Hook
-- GPT Search Page
-- GPT Search Bar
-- **Multi-language Feature in App**
-- Get Gemini API key
-- GPT Search API Call
-- fetched gptMoviesSuggestion from TMDB
-- Memoization
-- Made our Site Responsive
+A responsive movie search application built with React that allows users to search for movies using the Gemini API. The app features user authentication (sign in and sign up) and utilizes Redux for state management, Tailwind CSS for styling, and React Toastify for notifications.
 
-# Features
+## Technologies & Packages Used
 
-- Login\Sign Up
-  - Sign In \ Sign Up Form
-  - Redirect to Browse Page
-- Browse Page (After Authentication)
-  - Header
-  - Main Movie
-    - Trailer in Background
-    - Title & Description
-    - Movie Suggestion
-      - Movie List \* N
-- NetflixGPT
-- Search Bar
-- Movie Suggestion
+- **React**: A JavaScript library for building user interfaces.
+- **React Router**: Declarative routing for React applications.
+- **React Toastify**: Toast notifications for React.
+- **Redux**: A predictable state container for JavaScript apps.
+- **Tailwind CSS**: A utility-first CSS framework for building custom designs.
+- **Gemini API**: A movie database API for searching movies.
+
+## Features
+
+- **Search Movies**: Search for movies using the Gemini API.
+- **User Authentication**: Sign in and sign up functionalities.
+- **Responsive Design**: The app is fully responsive and works well on various devices.
+- **Dynamic Recommendations:** Movie suggestions based on Categories.
+
+  ---
+
+### 🔗 Live Demo
+
+Check out the live version here: [NetflixGPT Live](https://netflix-gpt-ddeepak26s-projects.vercel.app/)
