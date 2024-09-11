@@ -15,6 +15,7 @@ import lang from "../utils/languageConstants";
 const SignIn = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const langKey = useSelector((store) => store.config.lang);
 
@@ -29,63 +30,55 @@ const SignIn = () => {
     if (message) return;
 
     if (!isSignInForm) {
-      // sign up logic
+      // Sign up logic
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
       )
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
-          // Update Profile
           updateProfile(user, {
             displayName: name.current.value,
             photoURL: profileImage,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
-              dispatch(
-                addUser({
-                  uid: uid,
-                  email: email,
-                  displayName: displayName,
-                  photoURL: photoURL,
-                })
-              );
+              dispatch(addUser({ uid, email, displayName, photoURL }));
               toast.success(`Welcome, ${displayName || "user"}!`);
             })
             .catch((error) => {
+              console.error("Error updating profile:", error);
               setErrorMessage(error.message);
             });
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + " " + errorMessage);
+          console.error("Error signing up:", error);
+          setErrorMessage(error.message);
         });
     } else {
-      // sign in logic
       signInWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
       )
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
           toast.success(`Welcome back, ${user.displayName || "user"}!`);
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode + " " + errorMessage);
+        .catch(() => {
+          setErrorMessage("Invalid email or password");
         });
     }
   };
 
-  const toogleSignInForm = () => {
+  const toggleSignInForm = () => {
     setSignInForm(!isSignInForm);
+    setErrorMessage(null);
+  };
+
+  const handleShowPasswordClick = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -94,7 +87,7 @@ const SignIn = () => {
         <h1 className="text-3xl font-bold mb-6">
           {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
         </h1>
-        <form onSubmit={(e) => e.preventDefault}>
+        <form onSubmit={(e) => e.preventDefault()}>
           {!isSignInForm && (
             <div className="mb-6">
               <input
@@ -115,16 +108,27 @@ const SignIn = () => {
               placeholder={lang[langKey].emailAddress}
             />
           </div>
-          <div className="mb-3">
+          <div className="mb-3 relative">
             <input
               ref={password}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 bg-black bg-opacity-50 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder={lang[langKey].password}
             />
-            <p className="text-red-500 font-bold">{errorMessage}</p>
+            <button
+              type="button"
+              onClick={handleShowPasswordClick}
+              className="absolute inset-y-0 right-0 flex items-center px-3"
+            >
+              {showPassword ? (
+                <i className="fa-regular fa-eye-slash text-white bg-red-400"></i>
+              ) : (
+                <i className="fa-regular fa-eye"></i>
+              )}
+            </button>
           </div>
+          <p className="text-red-500 font-bold mb-4">{errorMessage}</p>
           <div className="flex items-center justify-between">
             <button
               className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline"
@@ -135,11 +139,11 @@ const SignIn = () => {
             </button>
           </div>
           <div className="mt-6">
-            <p onClick={toogleSignInForm}>
+            <p onClick={toggleSignInForm}>
               {isSignInForm
                 ? lang[langKey].newToNetflix
                 : lang[langKey].alreadyRegistered}
-              <span className="cursor-pointer underline user-se">
+              <span className="cursor-pointer underline">
                 {!isSignInForm
                   ? lang[langKey].signInNow
                   : lang[langKey].signUpNow}

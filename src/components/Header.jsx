@@ -114,6 +114,23 @@ const Header = () => {
               onClick={handleDropdownToggle}
             />
 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className={`h-6 w-6 text-white transition-transform ${
+                isDropdownOpen ? "rotate-180" : ""
+              }`}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+
             {isDropdownOpen && (
               <div className="absolute top-full right-0 mt-2 w-60 bg-gray-800 border border-gray-700 rounded shadow-lg text-white">
                 <div className="p-4">
@@ -135,18 +152,28 @@ const Header = () => {
                           {user.email}
                         </td>
                       </tr>
+                      <tr>
+                        <td colSpan="2" className="pt-4">
+                          <button
+                            onClick={handleSignOut}
+                            className="bg-red-600 text-white font-bold py-2 px-4 rounded-lg w-full transition-transform duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                          >
+                            {lang[langKey].signOut}
+                          </button>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             )}
 
-            <button
+            {/* <button
               onClick={handleSignOut}
               className="bg-red-600 text-white font-bold py-2 px-4 rounded-lg w-full transition-transform duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
             >
               {lang[langKey].signOut}
-            </button>
+            </button> */}
           </div>
         )}
 
