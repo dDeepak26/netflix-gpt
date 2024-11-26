@@ -1,5 +1,10 @@
 # Netflix-GPT
 
+### 🔗 Live Demo
+
+Check out the live version here: [NetflixGPT Live](https://netflix-gpt-ddeepak26s-projects.vercel.app/)
+
+---
 A responsive movie search application built with React that allows users to search for movies using the Gemini API. The app features user authentication (sign in and sign up) and utilizes Redux for state management, Tailwind CSS for styling, and React Toastify for notifications.
 
 ## Technologies & Packages Used
@@ -18,8 +23,4 @@ A responsive movie search application built with React that allows users to sear
 - **Responsive Design**: The app is fully responsive and works well on various devices.
 - **Dynamic Recommendations:** Movie suggestions based on Categories.
 
-  ---
 
-### 🔗 Live Demo
-
-Check out the live version here: [NetflixGPT Live](https://netflix-gpt-ddeepak26s-projects.vercel.app/)
